@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.motion.widget.MotionLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity"
     android:background="@color/rec_bc"
-    app:layoutDescription="@xml/activity_main_scene">
+    tools:context=".ui.MainActivity">
 
 
     <ImageView
-        android:layout_marginTop="10dp"
+        android:alpha="0"
         android:id="@+id/imageView2"
         android:layout_width="68dp"
         android:layout_height="70dp"
@@ -20,21 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toTopOf="parent"
+/>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="15dp"
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -55,4 +53,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.motion.widget.MotionLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
