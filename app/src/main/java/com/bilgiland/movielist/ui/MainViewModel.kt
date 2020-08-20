@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
-import com.bilgiland.movielist.data.ApiService
+import com.bilgiland.movielist.data.remote.ApiService
 import com.bilgiland.movielist.data.respository.MovieDatSource
 
 class MainViewModel @ViewModelInject constructor(private val api: ApiService) :
@@ -19,4 +19,6 @@ class MainViewModel @ViewModelInject constructor(private val api: ApiService) :
         MovieDatSource(api)
     }.flow
         .cachedIn(viewModelScope)
+
+
 }

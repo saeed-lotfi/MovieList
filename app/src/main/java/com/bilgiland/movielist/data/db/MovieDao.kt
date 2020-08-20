@@ -12,10 +12,10 @@ import com.bilgiland.movielist.data.model.MovieModel
 interface MovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(model: List<MovieModel>)
+    suspend fun insertAll(model: List<MovieModel>)
 
-    @Query("select * from MovieModel")
-    fun getAll(): PagingSource<Int, MovieModel>
+//    @Query("select * from MovieModel")
+//    fun getAll(): PagingSource<Int, MovieModel>
 
 
 }

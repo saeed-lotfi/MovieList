@@ -4,8 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import com.bilgiland.movielist.ConstValue.BASE_URL
 import com.bilgiland.movielist.ConstValue.DATABASE_NAME
-import com.bilgiland.movielist.data.ApiService
 import com.bilgiland.movielist.data.db.MovieDatabase
+import com.bilgiland.movielist.data.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,12 +22,12 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun getRetrofit() =
-        Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build()
-            .create(ApiService::class.java)
+    fun getRetrofit(): ApiService = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .baseUrl(BASE_URL)
+        .build()
+        .create(ApiService::class.java)
+
 
     @Provides
     @Singleton
