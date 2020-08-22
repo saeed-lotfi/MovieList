@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
-        android:name="com.bilgiland.movielist.ui.MovieDetailFragment"
+        android:name="com.bilgiland.movielist.ui.detail.MovieDetailFragment"
         android:label="MovieDetailFragment" >
 
     </fragment>

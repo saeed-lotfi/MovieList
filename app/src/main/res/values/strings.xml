@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Movie List</string>
+    <string name="error_occurred">Error occurred while getting Data</string>
+    <string name="language">language</string>
+    <string name="overview">OverView</string>
 </resources>
