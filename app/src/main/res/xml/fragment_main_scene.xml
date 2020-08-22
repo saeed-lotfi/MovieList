@@ -4,8 +4,8 @@
     xmlns:motion="http://schemas.android.com/apk/res-auto">
 
     <Transition
-        app:constraintSetEnd="@layout/activity_main_end"
-        app:constraintSetStart="@layout/activity_main"
+        app:constraintSetEnd="@layout/movie_fragment_end"
+        app:constraintSetStart="@layout/movie_fragment"
         app:duration="500">
 
         <OnSwipe

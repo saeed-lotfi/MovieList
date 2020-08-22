@@ -11,13 +11,12 @@ class MovieDatSource @Inject constructor(private val api: ApiService) :
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieModel> {
         return try {
             val nextPageNumber = params.key ?: 1
-            val response = api.getMovie(API_KEY,nextPageNumber)
+            val response = api.getMovies(API_KEY,nextPageNumber)
             val responseData = mutableListOf<MovieModel>()
-            val data = response.body()?.movieModels ?: emptyList()
+            val data = response.movieModels ?: emptyList()
             responseData.addAll(data)
 
             val prevKey = if (nextPageNumber == 1) null else nextPageNumber - 1
-
 
             LoadResult.Page(
                 data = responseData,
