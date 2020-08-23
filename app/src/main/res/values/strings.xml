@@ -3,4 +3,6 @@
     <string name="error_occurred">Error occurred while getting Data</string>
     <string name="language">language</string>
     <string name="overview">OverView</string>
+    <string name="vote">vote</string>
+    <string name="status">status</string>
 </resources>

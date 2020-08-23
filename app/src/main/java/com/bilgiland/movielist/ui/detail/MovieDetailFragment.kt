@@ -12,7 +12,6 @@ import com.bilgiland.movielist.util.showToast
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.detail_fragment.*
-import kotlinx.android.synthetic.main.movie_item.view.*
 
 
 @AndroidEntryPoint
@@ -37,14 +36,19 @@ class MovieDetailFragment : Fragment(R.layout.detail_fragment) {
             Glide.with(this).load(ConstValue.IMAGE_URL + it.posterPath)
                 .into(img_poster)
 
-            movie_content.visibility=View.VISIBLE
+            movie_content.visibility = View.VISIBLE
 
-            tv_movie_name.text=it.originalTitle
+            tv_movie_name.text = it.originalTitle
 
-            tv_language.text=it.originalLanguage
+            tv_language.text = it.originalLanguage
 
-            tv_overview.text=it.overview
+            tv_overview.text = it.overview
 
+            tv_status.text = it.status
+
+            progress_vote.progress = it.voteAverage.toInt()
+
+            tv_progress_text.text=it.voteAverage.toString()
         })
 
         viewModel.error.observe(viewLifecycleOwner, {
