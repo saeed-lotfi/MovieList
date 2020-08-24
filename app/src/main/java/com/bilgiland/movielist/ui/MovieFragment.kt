@@ -109,7 +109,7 @@ class MovieFragment : Fragment(R.layout.movie_fragment), ClickListener {
             }
 
             recyclerView.layoutManager = mLayoutManager
-            adapter = movieAdapter.withLoadStateFooter(
+            adapter = movieAdapter.withMyFooter(
                 footer = MovieLoadStateAdapter { movieAdapter.retry() }
             )
         }

@@ -1,9 +1,13 @@
 package com.bilgiland.movielist.ui
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.paging.LoadState
+import androidx.paging.LoadStateAdapter
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bilgiland.movielist.ConstValue.IMAGE_URL
@@ -43,6 +47,18 @@ class MovieAdapter @Inject constructor(private val listener: ClickListener) :
 
         override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean =
             newItem == oldItem
+    }
+
+    fun withMyFooter(
+        footer: LoadStateAdapter<*>
+    ): ConcatAdapter {
+        addLoadStateListener { loadStates ->
+            footer.loadState = when (loadStates.refresh) {
+                is LoadState.NotLoading -> loadStates.append
+                else -> loadStates.refresh
+            }
+        }
+        return ConcatAdapter(this, footer)
     }
 
 }
