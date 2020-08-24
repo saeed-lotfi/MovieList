@@ -1,7 +1,6 @@
 package com.bilgiland.movielist.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -21,6 +20,13 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MovieFragment : Fragment(R.layout.movie_fragment), ClickListener {
 
+    companion object {
+        private const val MOTION_TRANSITION_COMPLETED = 1F
+        private const val MOTION_TRANSITION_INITIAL = 0F
+    }
+
+    // detect if scrolled
+    private var hasMotionScrolled = false
 
     var movieAdapter: MovieAdapter = MovieAdapter(this)
 
@@ -32,7 +38,6 @@ class MovieFragment : Fragment(R.layout.movie_fragment), ClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         initObj()
 
         initRecyclerView()
@@ -42,6 +47,17 @@ class MovieFragment : Fragment(R.layout.movie_fragment), ClickListener {
         manageClick()
 
     }
+
+    override fun onPause() {
+        super.onPause()
+        hasMotionScrolled = motionLayout.progress > MOTION_TRANSITION_INITIAL
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (hasMotionScrolled) motionLayout.progress = MOTION_TRANSITION_COMPLETED
+    }
+
 
     // manage click
     private fun manageClick() {
