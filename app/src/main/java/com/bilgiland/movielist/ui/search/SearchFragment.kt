@@ -15,9 +15,9 @@ import com.bilgiland.movielist.R
 import com.bilgiland.movielist.ui.ClickListener
 import com.bilgiland.movielist.ui.MovieAdapter
 import com.bilgiland.movielist.ui.MovieLoadStateAdapter
+import com.bilgiland.movielist.util.hideKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
-import kotlinx.android.synthetic.main.movie_fragment.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -50,6 +50,7 @@ class SearchFragment : Fragment(R.layout.fragment_search), ClickListener {
         lifecycleScope.launch {
             movieAdapter.submitData(PagingData.empty())
             viewModel.clearData()
+            activity?.hideKeyboard()
         }
     }
 
