@@ -6,12 +6,15 @@ import com.bilgiland.movielist.data.model.MovieModel
 import com.bilgiland.movielist.data.remote.ApiService
 import javax.inject.Inject
 
-class MovieDatSource @Inject constructor(private val api: ApiService) :
+class SearchMovieDatSource constructor(
+    private val api: ApiService,
+    private val searchQuery: String
+) :
     PagingSource<Int, MovieModel>() {
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieModel> {
         return try {
             val nextPageNumber = params.key ?: 1
-            val response = api.getMovies(API_KEY, nextPageNumber)
+            val response = api.getMovieSearch(searchQuery, API_KEY, nextPageNumber)
             val responseData = mutableListOf<MovieModel>()
             val data = response.movieModels ?: emptyList()
             responseData.addAll(data)
