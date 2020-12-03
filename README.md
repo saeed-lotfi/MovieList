@@ -1,5 +1,5 @@
 # MovieList
-Android batman Movie using Hilt, Coroutines, Jetpack (Room, ViewModel, LiveData, Pagination) based on MVVM architecture
+Android  Movie List using Hilt, Coroutines, Jetpack (Room, ViewModel, LiveData, Paging 3) based on MVVM architecture
 
 ![](demo.gif)
   
