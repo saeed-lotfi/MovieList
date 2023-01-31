@@ -12,6 +12,7 @@ import com.bilgiland.movielist.util.showToast
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.detail_fragment.*
+import java.text.DecimalFormat
 
 
 @AndroidEntryPoint
@@ -30,7 +31,7 @@ class MovieDetailFragment : Fragment(R.layout.detail_fragment) {
         if (movieId == 0L)
             errorOperation()
 
-        viewModel.getDetail(movieId).observe(viewLifecycleOwner, {
+        viewModel.getDetail(movieId).observe(viewLifecycleOwner) {
             img_poster.clearAnimation()
 
             Glide.with(this).load(ConstValue.IMAGE_URL + it.posterPath)
@@ -48,14 +49,16 @@ class MovieDetailFragment : Fragment(R.layout.detail_fragment) {
 
             progress_vote.progress = it.voteAverage.toInt()
 
-            tv_progress_text.text=it.voteAverage.toString()
-        })
 
-        viewModel.error.observe(viewLifecycleOwner, {
+            val formatter = DecimalFormat("0.0")
+            tv_progress_text.text = formatter.format(it.voteAverage)
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) {
             if (it)
                 errorOperation()
 
-        })
+        }
 
     }
 

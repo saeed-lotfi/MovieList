@@ -38,7 +38,7 @@ data class MovieDetail(
     val title: String,
     val video: Boolean,
     @field:SerializedName("vote_average")
-    val voteAverage: Double,
+    val voteAverage: Float,
     @field:SerializedName("vote_count")
     val voteCount: Int
 )
