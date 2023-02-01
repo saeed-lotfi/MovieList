@@ -1,6 +1,5 @@
 package com.bilgiland.movielist.ui
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -8,9 +7,11 @@ import androidx.paging.PagingConfig
 import androidx.paging.cachedIn
 import com.bilgiland.movielist.data.remote.ApiService
 import com.bilgiland.movielist.data.respository.MovieDatSource
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel @ViewModelInject constructor(private val api: ApiService) :
-    @androidx.hilt.lifecycle.ViewModelInject ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val api: ApiService) : ViewModel() {
 
     private var pagingSource: MovieDatSource? = null
 

@@ -1,6 +1,5 @@
 package com.bilgiland.movielist.ui.search
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -10,9 +9,12 @@ import androidx.paging.cachedIn
 import com.bilgiland.movielist.data.model.MovieModel
 import com.bilgiland.movielist.data.respository.SearchMovieDatSource
 import com.bilgiland.movielist.data.respository.SearchRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class SearchViewModel @ViewModelInject constructor(private val searchRepository: SearchRepository) :
+@HiltViewModel
+class SearchViewModel @Inject constructor(private val searchRepository: SearchRepository) :
     ViewModel() {
 
     private var pagingSource: SearchMovieDatSource? = null

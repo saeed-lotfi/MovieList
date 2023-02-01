@@ -1,6 +1,7 @@
 package com.bilgiland.movielist.data.respository
 
 import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.bilgiland.movielist.ConstValue.API_KEY
 import com.bilgiland.movielist.data.model.MovieModel
 import com.bilgiland.movielist.data.remote.ApiService
@@ -30,5 +31,10 @@ class SearchMovieDatSource constructor(
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
+    }
+
+    //todo
+    override fun getRefreshKey(state: PagingState<Int, MovieModel>): Int? {
+        return null
     }
 }

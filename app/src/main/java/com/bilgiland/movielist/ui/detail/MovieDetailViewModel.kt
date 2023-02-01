@@ -1,15 +1,14 @@
 package com.bilgiland.movielist.ui.detail
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.bilgiland.movielist.data.model.MovieDetail
 import com.bilgiland.movielist.data.respository.MovieDetailRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onStart
+import javax.inject.Inject
 
-class MovieDetailViewModel @ViewModelInject constructor(private val repository: MovieDetailRepository):
+@HiltViewModel
+class MovieDetailViewModel @Inject constructor(private val repository: MovieDetailRepository):
     ViewModel() {
 
     private val _error = MutableLiveData<Boolean>()
